@@ -29,18 +29,17 @@ $(document).ready(function() {
     $("#animal-buttons").on("click", ".animal", function() {
         let animalName = $(this).attr("data-name")
         var queryURL = `https://api.giphy.com/v1/gifs/search?api_key=81nR4UTAbEUOMDiG3T90vaRvjJbxNdCp&q=${animalName}&limit=20&offset=0&rating=g&lang=en`;
+    
         $.ajax({
             url:queryURL,
             method: "GET"
           }).then(function(respuesta){
-            
-         //   $("#movies-view").text(JSON.stringify(respuesta))
-            $("#animals").html(`<img src= '${respuesta.images.fixed_height_still.url}' >`)
-         //   console.log(respuesta)
+           
+           
+            //Falta leer el API
+            $("#animals").html(`<img src= '${respuesta.data[18].original}' >`)
+     
           })
-          
-          
-       
     
     })
     

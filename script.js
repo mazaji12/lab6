@@ -28,19 +28,23 @@ $(document).ready(function() {
     // La logica del click de cada boton para hacer la llamda al API
     $("#animal-buttons").on("click", ".animal", function() {
         let animalName = $(this).attr("data-name")
-        var queryURL = `https://api.giphy.com/v1/gifs/search?api_key=81nR4UTAbEUOMDiG3T90vaRvjJbxNdCp&q=${animalName}&limit=20&offset=0&rating=g&lang=en`;
-    
+        var queryURL = `https://api.giphy.com/v1/gifs/search?api_key=81nR4UTAbEUOMDiG3T90vaRvjJbxNdCp&q=${animalName}&limit=10&offset=0&rating=g&lang=en`;
+        
         $.ajax({
             url:queryURL,
             method: "GET"
-          }).then(function(respuesta){
-           
-           
-            //Falta leer el API
-            $("#animals").html(`<img src= '${respuesta.data[18].original}' >`)
-     
+          }).then(function(response){
+
+            for(let i=0;i<response.data.length;i++){
+
+
+                $("#animals").append(`<p'${response.data[i].rating}' >`);
+                $("#animals").append(`<img src= '${response.data[i].images.fixed_height.url}' >`);
+
+            }
+
           })
-    
+        
     })
     
     

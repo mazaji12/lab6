@@ -38,7 +38,7 @@ $(document).ready(function() {
             for(let i=0;i<response.data.length;i++){
 
 
-                $("#animals").append(`<p'${response.data[i].rating}' >`);
+                $("#animals").append(`<p>'${response.data[i].rating}'</p>`);
                 $("#animals").append(`<img src= '${response.data[i].images.fixed_height.url}' >`);
 
             }
